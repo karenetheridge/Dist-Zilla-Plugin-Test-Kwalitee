@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - fix installation failures with Test::Kwalitee 1.09 (issue #4,
+      harleypig's repo)
 
 2.03      2011-10-19 08:56:47 America/Boise
 
