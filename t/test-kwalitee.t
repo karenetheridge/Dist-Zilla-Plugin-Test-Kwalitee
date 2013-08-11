@@ -36,14 +36,14 @@ my ( $result, $output, $error, $errflags );
   local $!;
   local $?;
   ( $output, $error ) = capture {
-    $result = system( $^X, $expected_file );
+    $result = system( "RELEASE_TESTING=1 $^X $expected_file" );
   };
   $errflags = { '@' => $@, '!' => $!, '?' => $? };
 }
 my $success = 1;
-isnt( $result, 0, 'Test ran , and failed, as intended' ) or do { $success = 0 };
-like( $output, qr/ok.*no_symlinks/m,   'Test dist lacked symlinks' )   or do { $success = 0 };
-like( $output, qr/ok.*proper_libs/m,   'Test dist has proper libs' )   or do { $success = 0 };
+isnt( $result, 0, 'Test ran, and failed, as intended' ) or do { $success = 0 };
+like( $output, qr/ok.*no_symlinks/m, 'Test dist lacked symlinks' )   or do { $success = 0 };
+like( $output, qr/not ok.*has_readme/m, 'Test dist has no readme' )   or do { $success = 0 };
 
 if ( not $success ) {
   diag explain {

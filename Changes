@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - adjust tests to handle recent changes to Test::Kwalitee and
+      Module::CPANTS::Analyse
 
 2.04      2013-07-25 17:29:10 America/Vancouver
     - fix installation failures with Test::Kwalitee 1.09 (issue #4,
