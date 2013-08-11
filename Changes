@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+2.05      2013-08-11 14:18:58 America/Vancouver
     - adjust tests to handle recent changes to Test::Kwalitee and
       Module::CPANTS::Analyse
 
