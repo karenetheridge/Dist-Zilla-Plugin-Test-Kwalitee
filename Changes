@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - removed old and deprecated Dist::Zilla::Plugin::KwaliteeTests, which is
+      no longer indexed by PAUSE anyway
 
 2.05      2013-08-11 14:18:58 America/Vancouver
     - adjust tests to handle recent changes to Test::Kwalitee and
