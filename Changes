@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - include in the generated test the exact version of the plugin that
+      generated the test
 
 2.06      2013-08-16 19:41:24 America/Vancouver
     - removed old and deprecated Dist::Zilla::Plugin::KwaliteeTests, which is
