@@ -1,4 +1,3 @@
-use 5.008;
 use strict;
 use warnings;
 
@@ -35,7 +34,7 @@ sub register_prereqs
             type  => 'requires',
             phase => 'develop',
         },
-        'Test::Kwalitee' => '0',
+        'Test::Kwalitee' => '1.08',
     );
 }
 

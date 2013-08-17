@@ -6,6 +6,7 @@ Revision history for Perl extension {{$dist->name}}
     - fixed tests broken on win32
     - Test::Kwalitee is now required to be present when the test is run (by
       authors, at release time)
+    - cleaned up prerequisite list
 
 2.05      2013-08-11 14:18:58 America/Vancouver
     - adjust tests to handle recent changes to Test::Kwalitee and
