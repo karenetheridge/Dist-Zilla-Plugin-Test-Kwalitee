@@ -5,12 +5,15 @@ use warnings;
 package Dist::Zilla::Plugin::Test::Kwalitee;
 # ABSTRACT: Release tests for kwalitee
 use Moose;
-with 'Dist::Zilla::Role::FileGatherer','Dist::Zilla::Role::TextTemplate';
-
 use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a sub.
 use Data::Section 0.004 # fixed header_re
     { installer => method_installer }, '-setup';
 use namespace::autoclean;
+
+with
+    'Dist::Zilla::Role::FileGatherer',
+    'Dist::Zilla::Role::TextTemplate',
+    'Dist::Zilla::Role::PrereqSource';
 
 sub mvp_multivalue_args { return qw( skiptest ) }
 
@@ -23,6 +26,18 @@ has skiptest => (
     push_skiptest => 'push'
   },
 );
+
+sub register_prereqs
+{
+    my $self = shift;
+    $self->zilla->register_prereqs(
+        {
+            type  => 'requires',
+            phase => 'develop',
+        },
+        'Test::Kwalitee' => '0',
+    );
+}
 
 sub gather_files {
   my ( $self, ) = @_;
@@ -78,6 +93,7 @@ following file:
 =begin Pod::Coverage
 
   mvp_multivalue_args
+  register_prereqs
   gather_files
 
 =end Pod::Coverage
