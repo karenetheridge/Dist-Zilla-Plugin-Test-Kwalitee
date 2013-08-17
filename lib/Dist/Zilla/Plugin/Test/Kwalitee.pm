@@ -5,8 +5,12 @@ use warnings;
 package Dist::Zilla::Plugin::Test::Kwalitee;
 # ABSTRACT: Release tests for kwalitee
 use Moose;
-use Data::Section -setup;
 with 'Dist::Zilla::Role::FileGatherer','Dist::Zilla::Role::TextTemplate';
+
+use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a sub.
+use Data::Section 0.004 # fixed header_re
+    { installer => method_installer }, '-setup';
+use namespace::autoclean;
 
 sub mvp_multivalue_args { return qw( skiptest ) }
 
@@ -52,8 +56,6 @@ sub gather_files {
 };
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
-1;
 
 =begin :prelude
 
