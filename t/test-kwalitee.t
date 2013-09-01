@@ -4,6 +4,7 @@ use warnings;
 use Dist::Zilla::Tester;
 use Path::Class;
 use Test::More;
+use Cwd;
 
 # FILENAME: test-kwalitee.t
 # CREATED: 29/08/11 15:36:11 by Kent Fredric (kentnl) <kentfredric@gmail.com>
@@ -16,17 +17,11 @@ my $sourcedir     = $tempdir->subdir('source');
 my $builddir      = $tempdir->subdir('build');
 my $expected_file = $builddir->subdir('xt')->subdir('release')->file('kwalitee.t');
 
-chdir $sourcedir;
-
 $tzil->build;
-END { # Remove (empty) dir created by building the dists
-    require File::Path;
-    my $tmp = $tempdir->parent;
-    chdir $tmp->parent;
-    File::Path::remove_tree($tmp, { keep_root => 0 });
-}
 
 ok( -e $expected_file, 'test created' );
+
+my $cwd = getcwd;
 chdir $builddir;
 
 SKIP: {
@@ -58,5 +53,7 @@ SKIP: {
       };
     }
 }
+
+chdir $cwd;
 
 done_testing;
