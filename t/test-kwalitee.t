@@ -1,16 +1,17 @@
 use strict;
 use warnings;
 
-use Dist::Zilla::Tester;
-use Path::Class;
 use Test::More;
+use Test::Warnings;
+use Test::DZil;
+use Path::Tiny;
 use Cwd;
 
 # FILENAME: test-kwalitee.t
 # CREATED: 29/08/11 15:36:11 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Test the Test::Kwalitee plugin works
 
-my $tzil = Dist::Zilla::Tester->from_config( { dist_root => dir(qw( t test-kwalitee )), } );
+my $tzil = Builder->from_config( { dist_root => path(qw( t test-kwalitee )), } );
 
 my $tempdir       = $tzil->tempdir;
 my $sourcedir     = $tempdir->subdir('source');
