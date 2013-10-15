@@ -34,7 +34,7 @@ sub register_prereqs
             type  => 'requires',
             phase => 'develop',
         },
-        'Test::Kwalitee' => '1.08',
+        'Test::Kwalitee' => '1.12',
     );
 }
 

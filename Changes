@@ -4,6 +4,7 @@ Revision history for Perl extension {{$dist->name}}
     - include in the generated test the exact version of the plugin that
       generated the test
     - warnings tests bypassed during installation
+    - update minimum required version of Test::Kwalitee
 
 2.06      2013-08-16 19:41:24 UTC-0700
     - removed old and deprecated Dist::Zilla::Plugin::KwaliteeTests, which is
