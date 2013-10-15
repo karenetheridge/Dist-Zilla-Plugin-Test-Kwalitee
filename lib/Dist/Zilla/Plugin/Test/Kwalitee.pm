@@ -105,7 +105,7 @@ following file:
 
 __DATA__
 ___[ xt/release/kwalitee.t ]___
-# this test was generated with {{ ref($plugin) . ' ' . $plugin->VERSION }}
+# this test was generated with {{ ref($plugin) . ' ' . ($plugin->VERSION || '<self>') }}
 use strict;
 use warnings;
 use Test::Kwalitee{{ $import_options }};

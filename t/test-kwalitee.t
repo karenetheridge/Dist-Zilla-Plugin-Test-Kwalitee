@@ -22,6 +22,9 @@ $tzil->build;
 
 ok( -e $expected_file, 'test created' );
 
+my $content = $expected_file->slurp;
+unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
+
 my $cwd = getcwd;
 chdir $builddir;
 
