@@ -13,16 +13,14 @@ use File::pushd 'pushd';
 
 my $tzil = Builder->from_config( { dist_root => path(qw( t test-kwalitee )), } );
 
-my $tempdir       = $tzil->tempdir;
-my $sourcedir     = $tempdir->subdir('source');
-my $build_dir     = $tempdir->subdir('build');
-my $expected_file = $build_dir->subdir('xt')->subdir('release')->file('kwalitee.t');
+my $build_dir     = path($tzil->tempdir)->child('build');
+my $expected_file = $build_dir->child(qw(xt release kwalitee.t));
 
 $tzil->build;
 
 ok( -e $expected_file, 'test created' );
 
-my $content = $expected_file->slurp;
+my $content = $expected_file->slurp_utf8;
 unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
 
 SKIP: {
