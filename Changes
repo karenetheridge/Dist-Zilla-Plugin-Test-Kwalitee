@@ -2,7 +2,7 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
-2.07      2013-10-15 02:18:02Z (Karen Etheridge)
+2.07      2013-10-15 02:18:02Z
     - include in the generated test the exact version of the plugin that
       generated the test
     - warnings tests bypassed during installation
