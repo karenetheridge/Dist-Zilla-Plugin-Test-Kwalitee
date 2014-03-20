@@ -5,7 +5,7 @@ use Test::More;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::DZil;
 use Path::Tiny;
-use Cwd;
+use File::pushd 'pushd';
 
 # FILENAME: test-kwalitee.t
 # CREATED: 29/08/11 15:36:11 by Kent Fredric (kentnl) <kentfredric@gmail.com>
@@ -15,8 +15,8 @@ my $tzil = Builder->from_config( { dist_root => path(qw( t test-kwalitee )), } )
 
 my $tempdir       = $tzil->tempdir;
 my $sourcedir     = $tempdir->subdir('source');
-my $builddir      = $tempdir->subdir('build');
-my $expected_file = $builddir->subdir('xt')->subdir('release')->file('kwalitee.t');
+my $build_dir     = $tempdir->subdir('build');
+my $expected_file = $build_dir->subdir('xt')->subdir('release')->file('kwalitee.t');
 
 $tzil->build;
 
@@ -25,12 +25,11 @@ ok( -e $expected_file, 'test created' );
 my $content = $expected_file->slurp;
 unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
 
-my $cwd = getcwd;
-chdir $builddir;
-
 SKIP: {
     skip 'remainder of tests are only run locally', 3
         unless $ENV{AUTHOR_TESTING} or $ENV{RELEASE_TESTING};
+
+    my $wd = pushd $build_dir;
 
     require Capture::Tiny;
     my ( $result, $output, $error, $errflags );
@@ -57,7 +56,5 @@ SKIP: {
       };
     }
 }
-
-chdir $cwd;
 
 done_testing;
