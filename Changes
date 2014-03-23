@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - line numbers in shipped code are now almost the same (within 3) as
+      the repository source, for easier debugging
 
 2.07      2013-10-15 02:18:02Z
     - include in the generated test the exact version of the plugin that
