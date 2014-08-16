@@ -99,7 +99,7 @@ __END__
 In C<dist.ini>:
 
     [Test::Kwalitee]
-    skiptest=use_strict ; Don't test for strictness.
+    skiptest = use_strict ; Don't test for strictness.
 
 =head1 DESCRIPTION
 
@@ -108,13 +108,16 @@ following file:
 
   xt/release/kwalitee.t - a standard Test::Kwalitee test
 
-=begin Pod::Coverage
+=head1 CONFIGURATION OPTIONS
 
-  mvp_multivalue_args
-  register_prereqs
-  gather_files
+=for stopwords skiptest
 
-=end Pod::Coverage
+=head2 skiptest
+
+The name of a kwalitee metric to skip (see the list in L<Test::Kwalitee>.
+Can be used more than once.
+
+=for Pod::Coverage mvp_multivalue_args register_prereqs gather_files
 
 =head1 SEE ALSO
 
