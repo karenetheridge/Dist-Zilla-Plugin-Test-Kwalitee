@@ -16,6 +16,7 @@ my $tzil = Builder->from_config( { dist_root => path(qw( t test-kwalitee )), } )
 my $build_dir     = path($tzil->tempdir)->child('build');
 my $expected_file = $build_dir->child(qw(xt release kwalitee.t));
 
+$tzil->chrome->logger->set_debug(1);
 $tzil->build;
 
 ok( -e $expected_file, 'test created' );
@@ -54,5 +55,8 @@ SKIP: {
       };
     }
 }
+
+diag 'got log messages: ', explain $tzil->log_messages
+    if not Test::Builder->new->is_passing;
 
 done_testing;
