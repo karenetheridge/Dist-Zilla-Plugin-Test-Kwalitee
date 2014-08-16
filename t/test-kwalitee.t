@@ -6,6 +6,7 @@ use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::DZil;
 use Path::Tiny;
 use File::pushd 'pushd';
+use Test::Deep;
 
 # FILENAME: test-kwalitee.t
 # CREATED: 29/08/11 15:36:11 by Kent Fredric (kentnl) <kentfredric@gmail.com>
@@ -17,6 +18,7 @@ my $tzil = Builder->from_config(
         add_files => {
             path(qw(source dist.ini)) => simple_ini(
                 [ GatherDir => ],
+                [ MetaConfig => ],
                 [ 'Test::Kwalitee' => ],
             ),
             path(qw(source lib Foo.pm)) => "package Foo;\n1;\n",
@@ -33,6 +35,34 @@ my $expected_file = $build_dir->child(qw(xt release kwalitee.t));
 
 $tzil->chrome->logger->set_debug(1);
 $tzil->build;
+
+cmp_deeply(
+    $tzil->distmeta,
+    superhashof({
+        prereqs => {
+            develop => {
+                requires => {
+                    'Test::Kwalitee' => '1.12',
+                },
+            },
+        },
+        x_Dist_Zilla => superhashof({
+            plugins => supersetof(
+                {
+                    class => 'Dist::Zilla::Plugin::Test::Kwalitee',
+                    config => {
+                        'Dist::Zilla::Plugin::Test::Kwalitee' => {
+                            skiptest => [],
+                        },
+                    },
+                    name => 'Test::Kwalitee',
+                    version => ignore,
+                },
+            ),
+        }),
+    }),
+    'prereqs are properly injected for the develop phase; dumped configs are good',
+) or diag 'got distmeta: ', explain $tzil->distmeta;
 
 ok( -e $expected_file, 'test created' );
 

@@ -27,6 +27,17 @@ has skiptest => (
   },
 );
 
+around dump_config => sub
+{
+    my ($orig, $self) = @_;
+    my $config = $self->$orig;
+
+    $config->{+__PACKAGE__} = {
+        skiptest => $self->skiptest,
+    };
+    return $config;
+};
+
 sub register_prereqs
 {
     my $self = shift;
