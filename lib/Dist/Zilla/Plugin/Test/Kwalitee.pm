@@ -2,6 +2,7 @@ use strict;
 use warnings;
 package Dist::Zilla::Plugin::Test::Kwalitee;
 # ABSTRACT: Release tests for kwalitee
+# KEYWORDS: plugin testing tests distribution kwalitee CPANTS quality lint errors critic
 
 use Moose;
 use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a sub.
