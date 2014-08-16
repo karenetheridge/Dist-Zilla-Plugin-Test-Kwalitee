@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+2.08      2014-08-16 04:56:06Z
     - line numbers in shipped code are now almost the same (within 3) as
       the repository source, for easier debugging
     - use kwalitee_ok() interface newly added in Test::Kwalitee 1.21
