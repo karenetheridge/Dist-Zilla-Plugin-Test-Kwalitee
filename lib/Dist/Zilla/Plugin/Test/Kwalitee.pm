@@ -101,6 +101,17 @@ following file:
 
 =end Pod::Coverage
 
+=head1 SEE ALSO
+
+=for :list
+
+* L<Module::CPANTS::Analyse>
+* L<App::CPANTS::Lint>
+* L<Test::Kwalitee>
+* L<Dist::Zilla::App::Command::kwalitee>
+* L<Test::Kwalitee::Extra>
+* L<Dist::Zilla::Plugin::Test::Kwalitee::Extra>
+
 =cut
 
 __DATA__
