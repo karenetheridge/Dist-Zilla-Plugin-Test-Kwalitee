@@ -1,3 +1,6 @@
-/.build
-!.gitignore
-/Dist-Zilla-Plugin-Test-Kwalitee-*
+/.ackrc
+/.build/
+!/.gitignore
+/.latest
+/Dist-Zilla-Plugin-Test-Kwalitee-*/
+/Dist-Zilla-Plugin-Test-Kwalitee-*.tar.gz
