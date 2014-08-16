@@ -19,7 +19,7 @@ my $tzil = Builder->from_config(
             path(qw(source dist.ini)) => simple_ini(
                 [ GatherDir => ],
                 [ MetaConfig => ],
-                [ 'Test::Kwalitee' => ],
+                [ 'Test::Kwalitee' => { skiptest => [ 'no_symlinks' ] } ],
             ),
             path(qw(source lib Foo.pm)) => "package Foo;\n1;\n",
             path(qw(source bin foobar)) => <<'FOOBAR',
@@ -42,7 +42,7 @@ cmp_deeply(
         prereqs => {
             develop => {
                 requires => {
-                    'Test::Kwalitee' => '1.12',
+                    'Test::Kwalitee' => '1.21',
                 },
             },
         },
@@ -52,7 +52,7 @@ cmp_deeply(
                     class => 'Dist::Zilla::Plugin::Test::Kwalitee',
                     config => {
                         'Dist::Zilla::Plugin::Test::Kwalitee' => {
-                            skiptest => [],
+                            skiptest => [ 'no_symlinks' ],
                         },
                     },
                     name => 'Test::Kwalitee',
@@ -68,6 +68,10 @@ ok( -e $expected_file, 'test created' );
 
 my $content = $expected_file->slurp_utf8;
 unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
+
+like($content, qr/^use Test::Kwalitee 1.21 'kwalitee_ok';$/m, 'correct version is used');
+
+like($content, qr/^kwalitee_ok\( qw\( -no_symlinks \) \);$/m, 'correct arguments are passed');
 
 diag 'got log messages: ', explain $tzil->log_messages
     if not Test::Builder->new->is_passing;

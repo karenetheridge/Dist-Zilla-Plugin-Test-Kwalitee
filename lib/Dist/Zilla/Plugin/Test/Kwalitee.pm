@@ -38,6 +38,8 @@ around dump_config => sub
     return $config;
 };
 
+sub _tk_prereq { '1.21' }
+
 sub register_prereqs
 {
     my $self = shift;
@@ -46,18 +48,18 @@ sub register_prereqs
             type  => 'requires',
             phase => 'develop',
         },
-        'Test::Kwalitee' => '1.12',
+        'Test::Kwalitee' => $self->_tk_prereq,
     );
 }
 
 sub gather_files {
   my ( $self, ) = @_;
 
-  my $import_options = '';
+  my $test_options = '';
 
   if ( @{ $self->skiptest } > 0 ) {
     my $skip = join ' ', map { "-$_" } @{ $self->skiptest };
-    $import_options = qq{ tests => [ qw( $skip ) ]};
+    $test_options = qq{ qw( $skip ) };
   }
 
   require Dist::Zilla::File::InMemory;
@@ -68,7 +70,8 @@ sub gather_files {
       {
         dist => \($self->zilla),
         plugin => \$self,
-        import_options => \$import_options,
+        test_options => \$test_options,
+        tk_prereq => \($self->_tk_prereq),
       },
     );
 
@@ -131,4 +134,9 @@ ___[ xt/release/kwalitee.t ]___
 # this test was generated with {{ ref($plugin) . ' ' . ($plugin->VERSION || '<self>') }}
 use strict;
 use warnings;
-use Test::Kwalitee{{ $import_options }};
+use Test::More 0.88;
+use Test::Kwalitee {{ $tk_prereq }} 'kwalitee_ok';
+
+kwalitee_ok({{ $test_options }});
+
+done_testing;
