@@ -8,7 +8,7 @@ Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.09
+version 2.10
 
 =for test_synopsis 1;
 __END__
@@ -36,22 +36,41 @@ following file:
 The name of a kwalitee metric to skip (see the list in L<Test::Kwalitee>.
 Can be used more than once.
 
+=head2 filename
+
+The filename of the test to add - defaults to F<xt/release/kwalitee.t>.
+
 =for Pod::Coverage mvp_multivalue_args register_prereqs gather_files
 
 =head1 SEE ALSO
 
 =over 4
 
+=item *
 
+L<Module::CPANTS::Analyse>
+
+=item *
+
+L<App::CPANTS::Lint>
+
+=item *
+
+L<Test::Kwalitee>
+
+=item *
+
+L<Dist::Zilla::App::Command::kwalitee>
+
+=item *
+
+L<Test::Kwalitee::Extra>
+
+=item *
+
+L<Dist::Zilla::Plugin::Test::Kwalitee::Extra>
 
 =back
-
-* L<Module::CPANTS::Analyse>
-* L<App::CPANTS::Lint>
-* L<Test::Kwalitee>
-* L<Dist::Zilla::App::Command::kwalitee>
-* L<Test::Kwalitee::Extra>
-* L<Dist::Zilla::Plugin::Test::Kwalitee::Extra>
 
 =head1 AUTHORS
 
@@ -88,7 +107,7 @@ the same terms as the Perl 5 programming language system itself.
 
 =head1 CONTRIBUTORS
 
-=for stopwords Marcel Gruenauer Mike Doherty
+=for stopwords Marcel Gruenauer Mike Doherty Graham Knop
 
 =over 4
 
@@ -99,6 +118,10 @@ Marcel Gruenauer <hanekomu@gmail.com>
 =item *
 
 Mike Doherty <doherty@cs.dal.ca>
+
+=item *
+
+Graham Knop <haarg@haarg.org>
 
 =back
 

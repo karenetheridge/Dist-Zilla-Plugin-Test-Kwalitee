@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+2.10      2014-08-23 17:55:26Z
     - fix pod error (thanks haarg!)
     - generated test filename is now configurable
 
