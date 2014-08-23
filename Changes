@@ -1,6 +1,7 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - fix pod error (thanks haarg!)
 
 2.09      2014-08-23 08:40:01Z
     - sort the arguments to kwalitee_ok, for smaller diffs between iterations
