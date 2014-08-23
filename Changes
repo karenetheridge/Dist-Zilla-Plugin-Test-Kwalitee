@@ -2,6 +2,8 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
     - sort the arguments to kwalitee_ok, for smaller diffs between iterations
+    - now again running the generated test during tests, but without
+      attempting to capture its output cleverly
 
 2.08      2014-08-16 04:56:06Z
     - line numbers in shipped code are now almost the same (within 3) as
