@@ -27,6 +27,12 @@ has skiptest => (
   },
 );
 
+has filename => (
+    is => 'ro', isa => 'Str',
+    lazy => 1,
+    default => sub { return 'xt/release/kwalitee.t' },
+);
+
 around dump_config => sub
 {
     my ($orig, $self) = @_;
@@ -34,6 +40,7 @@ around dump_config => sub
 
     $config->{+__PACKAGE__} = {
         skiptest => [ sort $self->skiptest ],
+        filename => $self->filename,
     };
     return $config;
 };
@@ -64,24 +71,24 @@ sub gather_files {
 
   require Dist::Zilla::File::InMemory;
 
-  for my $filename ( qw( xt/release/kwalitee.t ) ) {
-    my $content = $self->fill_in_string(
-      ${$self->section_data($filename)},
+  my $filename = $self->filename;
+
+  my $content = $self->fill_in_string(
+      ${$self->section_data('__TEST__')},
       {
         dist => \($self->zilla),
         plugin => \$self,
         test_options => \$test_options,
         tk_prereq => \($self->_tk_prereq),
       },
-    );
+  );
 
-    $self->add_file(
+  $self->add_file(
       Dist::Zilla::File::InMemory->new( {
         'name'    => $filename,
         'content' => $content,
       } ),
-    );
-  }
+  );
 };
 
 __PACKAGE__->meta->make_immutable;
@@ -117,6 +124,10 @@ following file:
 The name of a kwalitee metric to skip (see the list in L<Test::Kwalitee>.
 Can be used more than once.
 
+=head2 filename
+
+The filename of the test to add - defaults to F<xt/release/kwalitee.t>.
+
 =for Pod::Coverage mvp_multivalue_args register_prereqs gather_files
 
 =head1 SEE ALSO
@@ -132,7 +143,7 @@ Can be used more than once.
 =cut
 
 __DATA__
-___[ xt/release/kwalitee.t ]___
+___[ __TEST__ ]___
 # this test was generated with {{ ref($plugin) . ' ' . ($plugin->VERSION || '<self>') }}
 use strict;
 use warnings;
