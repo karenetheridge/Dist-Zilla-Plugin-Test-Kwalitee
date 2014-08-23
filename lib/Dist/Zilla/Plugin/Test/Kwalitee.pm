@@ -18,11 +18,11 @@ with
 sub mvp_multivalue_args { return qw( skiptest ) }
 
 has skiptest => (
-  is      => 'ro',
   isa     => 'ArrayRef[Str]',
   traits  => [ 'Array' ],
   default => sub { [] },
   handles => {
+    skiptest => 'elements',
     push_skiptest => 'push'
   },
 );
@@ -33,7 +33,7 @@ around dump_config => sub
     my $config = $self->$orig;
 
     $config->{+__PACKAGE__} = {
-        skiptest => $self->skiptest,
+        skiptest => [ sort $self->skiptest ],
     };
     return $config;
 };
@@ -57,8 +57,8 @@ sub gather_files {
 
   my $test_options = '';
 
-  if ( @{ $self->skiptest } > 0 ) {
-    my $skip = join ' ', map { "-$_" } @{ $self->skiptest };
+  if ( $self->skiptest > 0 ) {
+    my $skip = join ' ', map { "-$_" } sort $self->skiptest;
     $test_options = qq{ qw( $skip ) };
   }
 

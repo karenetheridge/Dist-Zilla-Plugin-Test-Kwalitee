@@ -19,7 +19,7 @@ my $tzil = Builder->from_config(
             path(qw(source dist.ini)) => simple_ini(
                 [ GatherDir => ],
                 [ MetaConfig => ],
-                [ 'Test::Kwalitee' => { skiptest => [ 'no_symlinks' ] } ],
+                [ 'Test::Kwalitee' => { skiptest => [ qw(no_symlinks has_license_in_source_file) ] } ],
             ),
             path(qw(source lib Foo.pm)) => "package Foo;\n1;\n",
             path(qw(source bin foobar)) => <<'FOOBAR',
@@ -52,7 +52,8 @@ cmp_deeply(
                     class => 'Dist::Zilla::Plugin::Test::Kwalitee',
                     config => {
                         'Dist::Zilla::Plugin::Test::Kwalitee' => {
-                            skiptest => [ 'no_symlinks' ],
+                            # note this is not the same order as provided above
+                            skiptest => [ qw(has_license_in_source_file no_symlinks) ],
                         },
                     },
                     name => 'Test::Kwalitee',
@@ -71,7 +72,7 @@ unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
 
 like($content, qr/^use Test::Kwalitee 1.21 'kwalitee_ok';$/m, 'correct version is used');
 
-like($content, qr/^kwalitee_ok\( qw\( -no_symlinks \) \);$/m, 'correct arguments are passed');
+like($content, qr/^kwalitee_ok\( qw\( -has_license_in_source_file -no_symlinks \) \);$/m, 'correct arguments are passed, and they are sorted');
 
 diag 'got log messages: ', explain $tzil->log_messages
     if not Test::Builder->new->is_passing;
