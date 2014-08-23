@@ -122,7 +122,6 @@ Can be used more than once.
 =head1 SEE ALSO
 
 =for :list
-
 * L<Module::CPANTS::Analyse>
 * L<App::CPANTS::Lint>
 * L<Test::Kwalitee>
