@@ -1,6 +1,7 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - fix test failures with new metrics added in MCA 0.93_01
 
 2.10      2014-08-23 17:55:26Z
     - fix pod error (thanks haarg!)

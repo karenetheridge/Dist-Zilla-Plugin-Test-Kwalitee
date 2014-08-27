@@ -25,7 +25,7 @@ my $tzil = Builder->from_config(
                 [ Manifest => ],
                 [ License => ],
                 [ Readme => ],
-                [ 'Test::Kwalitee' => { skiptest => [ qw(no_symlinks has_license_in_source_file) ] } ],
+                [ 'Test::Kwalitee' => { skiptest => [ qw(no_symlinks has_abstract_in_pod has_license_in_source_file) ] } ],
             ),
             path(qw(source lib Foo.pm)) => <<'FOO',
 package Foo;
@@ -66,7 +66,7 @@ cmp_deeply(
                     config => {
                         'Dist::Zilla::Plugin::Test::Kwalitee' => {
                             # note this is not the same order as provided above
-                            skiptest => [ qw(has_license_in_source_file no_symlinks) ],
+                            skiptest => [ qw(has_abstract_in_pod has_license_in_source_file no_symlinks) ],
                             filename => 'xt/release/kwalitee.t',
                         },
                     },
@@ -90,7 +90,11 @@ unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
 
 like($content, qr/^use Test::Kwalitee 1.21 'kwalitee_ok';$/m, 'correct version is used');
 
-like($content, qr/^kwalitee_ok\( qw\( -has_license_in_source_file -no_symlinks \) \);$/m, 'correct arguments are passed, and they are sorted');
+like(
+    $content,
+    qr/^kwalitee_ok\( qw\( -has_abstract_in_pod -has_license_in_source_file -no_symlinks \) \);$/m,
+    'correct arguments are passed, and they are sorted',
+);
 
 subtest 'run the generated test' => sub
 {
