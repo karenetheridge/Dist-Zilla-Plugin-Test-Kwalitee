@@ -8,7 +8,7 @@ Dist::Zilla::Plugin::Test::Kwalitee - Release tests for kwalitee
 
 =head1 VERSION
 
-version 2.10
+version 2.11
 
 =for test_synopsis 1;
 __END__
