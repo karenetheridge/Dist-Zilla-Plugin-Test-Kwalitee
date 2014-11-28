@@ -25,7 +25,7 @@ Revision history for Perl extension {{$dist->name}}
     - warnings tests bypassed during installation
     - update minimum required version of Test::Kwalitee
 
-2.06      2013-08-16 19:41:24 UTC-0700
+2.06      2013-08-17 02:41:24Z
     - removed old and deprecated Dist::Zilla::Plugin::KwaliteeTests, which is
       no longer indexed by PAUSE anyway
     - fixed tests broken on win32
@@ -33,34 +33,34 @@ Revision history for Perl extension {{$dist->name}}
       authors, at release time)
     - cleaned up prerequisite list
 
-2.05      2013-08-11 14:18:58 UTC-0700
+2.05      2013-08-11 21:18:58Z
     - adjust tests to handle recent changes to Test::Kwalitee and
       Module::CPANTS::Analyse
 
-2.04      2013-07-25 17:29:10 UTC-0700
+2.04      2013-07-26 00:29:10Z
     - fix installation failures with Test::Kwalitee 1.09 (issue #4,
       harleypig's repo)
 
-2.03      2011-10-19 08:56:47 UTC-0600
+2.03      2011-10-19 14:56:47Z
 
-2.020000  2011-09-07 20:47:05 UTC-0600
+2.020000  2011-09-08 02:47:05Z
     - Provide a deprecation warning (Mike Doherty)
     - Moved switch_namespace branch to master ( HarleyPig )
     - brought dist.ini up to date ( HarleyPig )
 
-1.112410  2011-08-29 09:57:31 UTC-0600
+1.112410  2011-08-29 15:57:31Z
     - Made pod coverage test pass ( HarleyPig )
     - Fixed error with tests needing 'plan' defined ( Kent Fredric)
     - Replace 2-phase inject/munge with 1-phase inject ( Kent Fredric )
     - Add some tests for our test being run ( Kent Fredric )
 
-1.112400  2011-08-28 09:34:37 UTC-0600
+1.112400  2011-08-28 15:34:37Z
 
-1.112390  2011-08-26 21:11:01 UTC-0600
+1.112390  2011-08-27 03:11:01Z
 
-1.101420  2010-05-22 17:47:26 UTC+0200
+1.101420  2010-05-22 15:47:26Z
     - removed weaver.ini since that's handled in Dist::Zilla's [@MARCEL] now
     - list Test::Kwalitee in dist.ini so we don't use() it anymore
 
-1.100690  2010-03-10 23:43:35 UTC+0100
+1.100690  2010-03-10 22:43:35Z
     - original version
