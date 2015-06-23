@@ -24,7 +24,7 @@ has skiptest => (
   traits  => [ 'Array' ],
   default => sub { [] },
   handles => {
-    skiptest => 'elements',
+    skiptest => 'sort',
     push_skiptest => 'push'
   },
 );
@@ -41,7 +41,7 @@ around dump_config => sub
     my $config = $self->$orig;
 
     $config->{+__PACKAGE__} = {
-        skiptest => [ sort $self->skiptest ],
+        skiptest => [ $self->skiptest ],
         filename => $self->filename,
     };
     return $config;
@@ -66,8 +66,9 @@ sub gather_files {
 
   my $test_options = '';
 
-  if ( $self->skiptest > 0 ) {
-    my $skip = join ' ', map { "-$_" } sort $self->skiptest;
+  my @skiptests = $self->skiptest;
+  if (@skiptests > 0) {
+    my $skip = join ' ', map { "-$_" } @skiptests;
     $test_options = qq{ qw( $skip ) };
   }
 
