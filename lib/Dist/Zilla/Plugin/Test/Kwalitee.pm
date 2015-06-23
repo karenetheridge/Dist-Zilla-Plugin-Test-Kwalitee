@@ -96,6 +96,8 @@ sub gather_files {
 
 __PACKAGE__->meta->make_immutable;
 
+=pod
+
 =begin :prelude
 
 =for test_synopsis
@@ -106,7 +108,7 @@ __END__
 
 =head1 SYNOPSIS
 
-In C<dist.ini>:
+In your F<dist.ini>:
 
     [Test::Kwalitee]
     skiptest = use_strict ; Don't test for strictness.
