@@ -4,6 +4,8 @@ package Dist::Zilla::Plugin::Test::Kwalitee;
 # ABSTRACT: Release tests for kwalitee
 # KEYWORDS: plugin testing tests distribution kwalitee CPANTS quality lint errors critic
 
+our $VERSION = '2.12';
+
 use Moose;
 use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a sub.
 use Data::Section 0.004 # fixed header_re
@@ -144,7 +146,7 @@ The filename of the test to add - defaults to F<xt/release/kwalitee.t>.
 
 __DATA__
 ___[ __TEST__ ]___
-# this test was generated with {{ ref($plugin) . ' ' . ($plugin->VERSION || '<self>') }}
+# this test was generated with {{ ref($plugin) . ' ' . $plugin->VERSION }}
 use strict;
 use warnings;
 use Test::More 0.88;

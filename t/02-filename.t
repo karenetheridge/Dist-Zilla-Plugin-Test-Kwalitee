@@ -55,7 +55,7 @@ cmp_deeply(
                         },
                     },
                     name => 'Test::Kwalitee',
-                    version => ignore,
+                    version => Dist::Zilla::Plugin::Test::Kwalitee->VERSION,
                 },
             ),
         }),
