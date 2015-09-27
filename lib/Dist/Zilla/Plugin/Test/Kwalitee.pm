@@ -100,14 +100,6 @@ __PACKAGE__->meta->make_immutable;
 
 =pod
 
-=begin :prelude
-
-=for test_synopsis
-1;
-__END__
-
-=end :prelude
-
 =head1 SYNOPSIS
 
 In your F<dist.ini>:
