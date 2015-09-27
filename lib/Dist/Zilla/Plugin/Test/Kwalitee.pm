@@ -3,6 +3,7 @@ use warnings;
 package Dist::Zilla::Plugin::Test::Kwalitee;
 # ABSTRACT: Release tests for kwalitee
 # KEYWORDS: plugin testing tests distribution kwalitee CPANTS quality lint errors critic
+# vim: set ts=8 sts=4 sw=4 tw=115 et :
 
 our $VERSION = '2.12';
 
