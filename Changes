@@ -3,6 +3,7 @@ Revision history for Dist-Zilla-Plugin-Test-Kwalitee
 {{$NEXT}}
     - use TODO around tests that fail on perl 5.8.x due to the buggy handling
       of qr/...$/m
+    - fix licencing metadata
 
 2.11      2014-08-27 01:40:14Z
     - fix test failures with new metrics added in MCA 0.93_01
