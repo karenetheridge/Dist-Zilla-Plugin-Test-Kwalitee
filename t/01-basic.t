@@ -88,6 +88,8 @@ ok( -e $file, 'test created' ) or skip 'test was not created', 3;
 my $content = $file->slurp_utf8;
 unlike($content, qr/[^\S\n]\n/, 'no trailing whitespace in generated test');
 
+local $TODO = 'qr/...$/m does not work before perl 5.010' if "$]" < '5.010';
+
 like($content, qr/^use Test::Kwalitee 1.21 'kwalitee_ok';$/m, 'correct version is used');
 
 like(
@@ -95,6 +97,8 @@ like(
     qr/^kwalitee_ok\( qw\( -has_abstract_in_pod -has_license_in_source_file -no_symlinks \) \);$/m,
     'correct arguments are passed, and they are sorted',
 );
+
+local $TODO;
 
 subtest 'run the generated test' => sub
 {
