@@ -86,7 +86,7 @@ SKIP: {
 ok( -e $file, 'test created' ) or skip 'test was not created', 3;
 
 my $content = $file->slurp_utf8;
-unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
+unlike($content, qr/[^\S\n]\n/, 'no trailing whitespace in generated test');
 
 like($content, qr/^use Test::Kwalitee 1.21 'kwalitee_ok';$/m, 'correct version is used');
 
