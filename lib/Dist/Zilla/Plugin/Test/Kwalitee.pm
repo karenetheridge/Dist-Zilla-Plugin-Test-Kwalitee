@@ -143,7 +143,7 @@ The filename of the test to add - defaults to F<xt/release/kwalitee.t>.
 
 __DATA__
 ___[ __TEST__ ]___
-# this test was generated with {{ ref($plugin) . ' ' . $plugin->VERSION }}
+# this test was generated with {{ ref $plugin }} {{ $plugin->VERSION }}
 use strict;
 use warnings;
 use Test::More 0.88;
