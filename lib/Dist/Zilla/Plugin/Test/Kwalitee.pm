@@ -56,8 +56,8 @@ sub register_prereqs
     my $self = shift;
     $self->zilla->register_prereqs(
         {
-            type  => 'requires',
             phase => 'develop',
+            type  => 'requires',
         },
         'Test::Kwalitee' => $self->_tk_prereq,
     );
