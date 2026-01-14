@@ -8,7 +8,7 @@ Dist::Zilla::Plugin::Test::Kwalitee - Author tests for kwalitee
 
 =head1 VERSION
 
-version 2.12
+version 2.13
 
 =head1 SYNOPSIS
 
@@ -69,6 +69,14 @@ L<Dist::Zilla::Plugin::Test::Kwalitee::Extra>
 
 =back
 
+=head1 GIVING THANKS
+
+=for stopwords MetaCPAN GitHub
+
+If you found this module to be useful, please show your appreciation by
+adding a +1 in L<MetaCPAN|https://metacpan.org/dist/Dist-Zilla-Plugin-Test-Kwalitee>
+and a star in L<GitHub|https://github.com/karenetheridge/Dist-Zilla-Plugin-Test-Kwalitee>.
+
 =head1 SUPPORT
 
 Bugs may be submitted through L<the RT bug tracker|https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-Test-Kwalitee>
@@ -78,7 +86,7 @@ There is also a mailing list available for users of this distribution, at
 L<http://dzil.org/#mailing-list>.
 
 There is also an irc channel available for users of this distribution, at
-irc://irc.perl.org/#distzilla.
+L<C<#distzilla> on C<irc.perl.org>|irc://irc.perl.org/#distzilla>.
 
 =head1 AUTHORS
 
