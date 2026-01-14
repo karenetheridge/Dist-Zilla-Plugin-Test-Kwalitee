@@ -70,7 +70,7 @@ sub gather_files {
 
   my @skiptests = $self->skiptest;
   if (@skiptests > 0) {
-    my $skip = join ' ', map { "-$_" } @skiptests;
+    my $skip = join ' ', map "-$_", @skiptests;
     $test_options = qq{ qw( $skip ) };
   }
 
