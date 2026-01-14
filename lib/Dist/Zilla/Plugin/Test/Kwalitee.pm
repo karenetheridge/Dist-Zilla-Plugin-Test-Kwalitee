@@ -5,7 +5,7 @@ package Dist::Zilla::Plugin::Test::Kwalitee;
 # KEYWORDS: plugin testing tests distribution kwalitee CPANTS quality lint errors critic
 # vim: set ts=8 sts=2 sw=2 tw=115 et :
 
-our $VERSION = '2.13';
+our $VERSION = '2.14';
 
 use Moose;
 use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a sub.
